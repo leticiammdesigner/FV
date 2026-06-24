@@ -1,4 +1,5 @@
 import { VBtn } from 'vuetify/components'
+import { tokens } from '../tokens/tokens.js'
 
 export default {
   title: 'Ação/Botão',
@@ -17,10 +18,13 @@ export default {
           backgroundColor: args.bgColor,
           color: args.textColor,
           border: args.borderColor !== 'transparent' ? '1px solid ' + args.borderColor : 'none',
-          borderRadius: '8px',
-          textTransform: 'none',
-          boxShadow: 'none',
-          letterSpacing: 'normal',
+          borderRadius: args.borderRadius,
+          textTransform: args.textTransform,
+          boxShadow: args.elevation,
+          letterSpacing: args.letterSpacing,
+          fontFamily: args.fontFamily,
+          fontSize: args.fontSize,
+          fontWeight: args.fontWeight,
         }"
       >
         {{ args.label }}
@@ -41,93 +45,142 @@ export default {
   },
 }
 
-// PRIMARY — Ação principal da marca
+// PRIMARY — action.primary
 export const Primary = {
   name: '🟠 Primary',
   args: {
     label: 'Criar Lead',
     disabled: false,
     size: 'default',
-    bgColor: '#EC6A00',
-    textColor: '#FFFFFF',
-    borderColor: 'transparent',
+    bgColor:      tokens.action.primary.default,
+    textColor:    tokens.text.onDark,
+    borderColor:  'transparent',
+    borderRadius: tokens.radius.field,
+    elevation:    tokens.elevation.none,
+    textTransform: tokens.typography.button.textTransform,
+    letterSpacing: tokens.typography.button.letterSpacing,
+    fontFamily:    tokens.typography.fontFamily,
+    fontSize:      tokens.typography.button.size,
+    fontWeight:    tokens.typography.button.weight,
   },
 }
 
-// SECONDARY OUTLINE — Ação secundária
+// SECONDARY OUTLINE — action.secondary
 export const SecondaryOutline = {
   name: '🔶 Secondary Outline',
   args: {
     label: 'Editar',
     disabled: false,
     size: 'default',
-    bgColor: 'transparent',
-    textColor: '#EC6A00',
-    borderColor: '#EC6A00',
+    bgColor:      tokens.action.secondary.default,
+    textColor:    tokens.action.secondary.text,
+    borderColor:  tokens.action.secondary.border,
+    borderRadius: tokens.radius.field,
+    elevation:    tokens.elevation.none,
+    textTransform: tokens.typography.button.textTransform,
+    letterSpacing: tokens.typography.button.letterSpacing,
+    fontFamily:    tokens.typography.fontFamily,
+    fontSize:      tokens.typography.button.size,
+    fontWeight:    tokens.typography.button.weight,
   },
 }
 
-// CANCEL — Cancelamento e saída
+// CANCEL — action.cancel
 export const Cancel = {
   name: '⬜ Cancel / Close',
   args: {
     label: 'Cancelar',
     disabled: false,
     size: 'default',
-    bgColor: 'transparent',
-    textColor: '#1D1B20',
-    borderColor: '#79767A',
+    bgColor:      tokens.action.cancel.default,
+    textColor:    tokens.action.cancel.text,
+    borderColor:  tokens.action.cancel.border,
+    borderRadius: tokens.radius.field,
+    elevation:    tokens.elevation.none,
+    textTransform: tokens.typography.button.textTransform,
+    letterSpacing: tokens.typography.button.letterSpacing,
+    fontFamily:    tokens.typography.fontFamily,
+    fontSize:      tokens.typography.button.size,
+    fontWeight:    tokens.typography.button.weight,
   },
 }
 
-// CTA GREEN — Confirmação e conclusão
+// CTA GREEN — action.confirm
 export const CtaGreen = {
   name: '🟢 CTA Green',
   args: {
     label: 'Salvar',
     disabled: false,
     size: 'default',
-    bgColor: '#4CAF50',
-    textColor: '#FFFFFF',
-    borderColor: 'transparent',
+    bgColor:      tokens.action.confirm.default,
+    textColor:    tokens.text.onDark,
+    borderColor:  'transparent',
+    borderRadius: tokens.radius.field,
+    elevation:    tokens.elevation.none,
+    textTransform: tokens.typography.button.textTransform,
+    letterSpacing: tokens.typography.button.letterSpacing,
+    fontFamily:    tokens.typography.fontFamily,
+    fontSize:      tokens.typography.button.size,
+    fontWeight:    tokens.typography.button.weight,
   },
 }
 
-// DANGER — Ação destrutiva
+// DANGER — action.danger
 export const Danger = {
   name: '🔴 Danger',
   args: {
     label: 'Sim, excluir',
     disabled: false,
     size: 'default',
-    bgColor: '#EA3A3D',
-    textColor: '#FFFFFF',
-    borderColor: 'transparent',
+    bgColor:      tokens.action.danger.default,
+    textColor:    tokens.text.onDark,
+    borderColor:  'transparent',
+    borderRadius: tokens.radius.field,
+    elevation:    tokens.elevation.none,
+    textTransform: tokens.typography.button.textTransform,
+    letterSpacing: tokens.typography.button.letterSpacing,
+    fontFamily:    tokens.typography.fontFamily,
+    fontSize:      tokens.typography.button.size,
+    fontWeight:    tokens.typography.button.weight,
   },
 }
 
-// TEXT — Ação terciária
+// TEXT — action.tertiary
 export const Text = {
   name: '📝 Text',
   args: {
     label: 'Ver mais',
     disabled: false,
     size: 'default',
-    bgColor: 'transparent',
-    textColor: '#EC6A00',
-    borderColor: 'transparent',
+    bgColor:      tokens.action.tertiary.default,
+    textColor:    tokens.action.tertiary.text,
+    borderColor:  'transparent',
+    borderRadius: tokens.radius.field,
+    elevation:    tokens.elevation.none,
+    textTransform: tokens.typography.button.textTransform,
+    letterSpacing: tokens.typography.button.letterSpacing,
+    fontFamily:    tokens.typography.fontFamily,
+    fontSize:      tokens.typography.button.size,
+    fontWeight:    tokens.typography.button.weight,
   },
 }
 
-// DISABLED — Estado desabilitado (todos os tipos)
+// DISABLED — disabled
 export const Disabled = {
   name: '🚫 Disabled',
   args: {
     label: 'Botão',
     disabled: true,
     size: 'default',
-    bgColor: '#E6E1E6',
-    textColor: '#CAC5CA',
-    borderColor: 'transparent',
+    bgColor:      tokens.disabled.background,
+    textColor:    tokens.disabled.text,
+    borderColor:  'transparent',
+    borderRadius: tokens.radius.field,
+    elevation:    tokens.elevation.none,
+    textTransform: tokens.typography.button.textTransform,
+    letterSpacing: tokens.typography.button.letterSpacing,
+    fontFamily:    tokens.typography.fontFamily,
+    fontSize:      tokens.typography.button.size,
+    fontWeight:    tokens.typography.button.weight,
   },
 }
