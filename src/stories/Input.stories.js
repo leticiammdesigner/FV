@@ -13,6 +13,7 @@ export default {
       <v-text-field
         v-bind="args"
         variant="outlined"
+        density="comfortable"
         style="max-width: 360px;"
       />
     `,

@@ -1,0 +1,181 @@
+/*
+ * SISLOC DS — FORÇA DE VENDAS
+ * vuetify-overrides.css v3
+ *
+ * Regra principal: NÃO mexer em border-width nem font-size do label.
+ * O Vuetify 3 calcula o notch baseado nesses valores —
+ * qualquer alteração quebra o recorte da label na borda.
+ * Aqui só trocamos CORES.
+ */
+
+/* ─── Variáveis globais do DS ───────────────────────────────────────────────── */
+
+:root {
+  --sisloc-brand:           #EC6A00;
+  --sisloc-focus:           #EC6A00;
+  --sisloc-error:           #EA3A3D;
+  --sisloc-text-primary:    #1D1B20;
+  --sisloc-text-secondary:  #79767A;
+  --sisloc-border:          #79767A;
+  --sisloc-border-subtle:   #E6E1E6;
+  --sisloc-disabled-bg:     #E6E1E6;
+  --sisloc-disabled-text:   #CAC5CA;
+  --sisloc-radius-field:    8px;
+  --sisloc-font:            'Roboto', sans-serif;
+  --sisloc-font-size-body:  14px;
+  --sisloc-font-size-label: 12px;
+
+  /* z-index scale */
+  --sisloc-z-dropdown: 100;
+  --sisloc-z-sticky:   200;
+  --sisloc-z-overlay:  300;
+  --sisloc-z-modal:    400;
+  --sisloc-z-toast:    500;
+  --sisloc-z-tooltip:  600;
+}
+
+/* ─── Border radius ──────────────────────────────────────────────────────────── */
+
+.sisloc-field .v-field {
+  border-radius: var(--sisloc-radius-field) !important;
+}
+
+/* ─── Borda default — só cor, sem mexer em width ────────────────────────────── */
+
+.sisloc-field .v-field__outline__start,
+.sisloc-field .v-field__outline__notch,
+.sisloc-field .v-field__outline__end {
+  border-color: var(--sisloc-border) !important;
+}
+
+/* ─── Focus — só troca a cor, Vuetify mantém o border-width dele ────────────── */
+
+.sisloc-field .v-field--focused .v-field__outline__start,
+.sisloc-field .v-field--focused .v-field__outline__notch,
+.sisloc-field .v-field--focused .v-field__outline__end {
+  border-color: var(--sisloc-focus) !important;
+}
+
+/* ─── Label — só cor, sem mexer em font-size ────────────────────────────────── */
+
+.sisloc-field .v-label {
+  color: var(--sisloc-text-secondary) !important;
+}
+
+.sisloc-field .v-field--focused .v-label {
+  color: var(--sisloc-focus) !important;
+}
+
+/* ─── Texto do campo ─────────────────────────────────────────────────────────── */
+
+.sisloc-field .v-field__input,
+.sisloc-field .v-select__selection-text {
+  color: var(--sisloc-text-primary) !important;
+}
+
+/* ─── Hint ───────────────────────────────────────────────────────────────────── */
+
+.sisloc-field .v-messages__message {
+  color: var(--sisloc-text-secondary) !important;
+}
+
+/* ─── Erro — só cor ──────────────────────────────────────────────────────────── */
+
+.sisloc-field.v-input--error .v-field__outline__start,
+.sisloc-field.v-input--error .v-field__outline__notch,
+.sisloc-field.v-input--error .v-field__outline__end {
+  border-color: var(--sisloc-error) !important;
+}
+
+.sisloc-field.v-input--error .v-label {
+  color: var(--sisloc-error) !important;
+}
+
+.sisloc-field.v-input--error .v-messages__message {
+  color: var(--sisloc-error) !important;
+}
+
+/* ─── Disabled ───────────────────────────────────────────────────────────────── */
+
+.sisloc-field.v-input--disabled .v-field {
+  background: var(--sisloc-disabled-bg) !important;
+}
+
+.sisloc-field.v-input--disabled .v-field__outline__start,
+.sisloc-field.v-input--disabled .v-field__outline__notch,
+.sisloc-field.v-input--disabled .v-field__outline__end {
+  border-color: var(--sisloc-border-subtle) !important;
+}
+
+.sisloc-field.v-input--disabled .v-label,
+.sisloc-field.v-input--disabled .v-field__input,
+.sisloc-field.v-input--disabled .v-select__selection-text {
+  color:   var(--sisloc-disabled-text) !important;
+  opacity: 1 !important;
+}
+
+/* ─── Ícones internos ────────────────────────────────────────────────────────── */
+
+.sisloc-field .v-field__append-inner .v-icon,
+.sisloc-field .v-field__prepend-inner .v-icon {
+  color: var(--sisloc-text-secondary) !important;
+}
+
+.sisloc-field .v-field--focused .v-field__append-inner .v-icon {
+  color: var(--sisloc-focus) !important;
+}
+
+/* ─── Dropdown panel ─────────────────────────────────────────────────────────── */
+
+.sisloc-select-list.v-list {
+  border-radius: var(--sisloc-radius-field) !important;
+  padding:       4px 0 !important;
+  box-shadow:    0px 4px 12px rgba(0,0,0,0.14) !important;
+}
+
+.sisloc-select-list .v-list-item {
+  min-height: 44px !important;
+  color:      var(--sisloc-text-primary) !important;
+}
+
+.sisloc-select-list .v-list-item--active {
+  background: var(--sisloc-border-subtle) !important;
+  color:      var(--sisloc-text-primary) !important;
+}
+
+.sisloc-select-list .v-list-item--active .v-list-item__overlay {
+  opacity: 0 !important;
+}
+
+.sisloc-select-list .v-list-item__append .v-icon {
+  display: none !important;
+}
+
+/* ─── Textarea ───────────────────────────────────────────────────────────────── */
+
+.sisloc-field.v-textarea .v-field {
+  min-height: 96px !important;
+}
+
+.sisloc-field.v-textarea textarea {
+  color:  var(--sisloc-text-primary) !important;
+  resize: vertical !important;
+}
+
+/* ─── Switch ─────────────────────────────────────────────────────────────────── */
+
+.sisloc-switch .v-switch__track {
+  background: var(--sisloc-text-secondary) !important;
+  opacity:    1 !important;
+}
+
+.sisloc-switch.v-input--dirty .v-switch__track {
+  background: var(--sisloc-brand) !important;
+}
+
+/* ─── z-index dos overlays ───────────────────────────────────────────────────── */
+
+.v-overlay.sisloc-modal     { z-index: var(--sisloc-z-modal)    !important; }
+.v-overlay.sisloc-dropdown  { z-index: var(--sisloc-z-dropdown) !important; }
+.v-snackbar.sisloc-snackbar { z-index: var(--sisloc-z-toast)    !important; }
+.v-tooltip.sisloc-tooltip   { z-index: var(--sisloc-z-tooltip)  !important; }
