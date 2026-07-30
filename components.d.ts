@@ -12,10 +12,15 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
+    SislocCardKanban: typeof import('./src/components/CardKanban/SislocCardKanban.vue')['default']
+    SislocDataTable: typeof import('./src/components/DataTable/SislocDataTable.vue')['default']
     SislocDatepicker: typeof import('./src/components/Datepicker/SislocDatepicker.vue')['default']
+    SislocEmptyState: typeof import('./src/components/EmptyState/SislocEmptyState.vue')['default']
+    SislocPagination: typeof import('./src/components/DataTable/SislocPagination.vue')['default']
     SislocPath: typeof import('./src/components/SislocPath.vue')['default']
     SislocSearchBar: typeof import('./src/components/SearchBar/SislocSearchBar.vue')['default']
     SislocSegmentedControl: typeof import('./src/components/Toggle/SislocSegmentedControl.vue')['default']
+    SislocTooltip: typeof import('./src/components/Tooltip/SislocTooltip.vue')['default']
     SislocViewToggle: typeof import('./src/components/Toggle/SislocViewToggle.vue')['default']
   }
 }
