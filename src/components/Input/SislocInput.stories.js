@@ -8,25 +8,48 @@
 // de demonstração, não uma regra do componente.
 // ============================================
 
+import { ref, watch } from 'vue'
 import SislocInput from './SislocInput.vue'
 
 export default {
   title: 'Formulário/Input de Texto',
   component: SislocInput,
   tags: ['autodocs'],
+  /*
+   * `v-bind="args"` passava modelValue como prop sem escutar
+   * `update:modelValue`, deixando a ligação unidirecional: o input
+   * nativo exibia a digitação, mas o estado Vue da story nunca mudava.
+   * Ref local ligado por v-model resolve; o watch mantém o painel
+   * Controls sincronizado sem mutar args.
+   */
   render: (args) => ({
     components: { SislocInput },
     setup() {
-      return { args }
+      const value = ref(args.modelValue)
+      watch(() => args.modelValue, (novoValor) => { value.value = novoValor })
+      return { args, value }
     },
     template: `
       <SislocInput
-        v-bind="args"
+        v-model="value"
+        :label="args.label"
+        :placeholder="args.placeholder"
+        :hint="args.hint"
+        :persistent-hint="args.persistentHint"
+        :counter="args.counter"
+        :disabled="args.disabled"
+        :readonly="args.readonly"
+        :error="args.error"
+        :error-messages="args.errorMessages"
+        :required="args.required"
+        :prepend-inner-icon="args.prependInnerIcon"
+        :append-inner-icon="args.appendInnerIcon"
         style="max-width: 360px;"
       />
     `,
   }),
   argTypes: {
+    modelValue: { control: 'text' },
     label: { control: 'text' },
     placeholder: { control: 'text' },
     hint: { control: 'text' },
