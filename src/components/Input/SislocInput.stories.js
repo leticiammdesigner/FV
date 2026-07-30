@@ -1,19 +1,27 @@
-import { VTextField } from 'vuetify/components'
+// ============================================
+// SISLOC DS — FORÇA DE VENDAS
+// SislocInput.stories.js
+//
+// A implementação vive em SislocInput.vue.
+// `variant="outlined"` e `density="comfortable"` passaram para o
+// componente; o `max-width: 360px` continua aqui por ser um limite
+// de demonstração, não uma regra do componente.
+// ============================================
+
+import SislocInput from './SislocInput.vue'
 
 export default {
   title: 'Formulário/Input de Texto',
-  component: VTextField,
+  component: SislocInput,
   tags: ['autodocs'],
   render: (args) => ({
-    components: { VTextField },
+    components: { SislocInput },
     setup() {
       return { args }
     },
     template: `
-      <v-text-field
+      <SislocInput
         v-bind="args"
-        variant="outlined"
-        density="comfortable"
         style="max-width: 360px;"
       />
     `,
