@@ -23,6 +23,7 @@ declare module 'vue' {
     SislocEmptyState: typeof import('./src/components/EmptyState/SislocEmptyState.vue')['default']
     SislocIconButton: typeof import('./src/components/IconButton/SislocIconButton.vue')['default']
     SislocInput: typeof import('./src/components/Input/SislocInput.vue')['default']
+    SislocModal: typeof import('./src/components/Modal/SislocModal.vue')['default']
     SislocPagination: typeof import('./src/components/DataTable/SislocPagination.vue')['default']
     SislocRadio: typeof import('./src/components/Radio/SislocRadio.vue')['default']
     SislocSearchBar: typeof import('./src/components/SearchBar/SislocSearchBar.vue')['default']
