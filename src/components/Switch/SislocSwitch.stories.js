@@ -1,27 +1,21 @@
-import { VSwitch } from 'vuetify/components'
-import { tokens } from '../tokens/tokens.js'
+// ============================================
+// SISLOC DS — FORÇA DE VENDAS
+// SislocSwitch.stories.js
+//
+// A implementação vive em SislocSwitch.vue.
+// A cor do DS é interna ao componente — por isso `color` saiu dos args.
+// ============================================
+
+import SislocSwitch from './SislocSwitch.vue'
 
 export default {
   title: 'Formulário/Switch',
-  component: VSwitch,
+  component: SislocSwitch,
   tags: ['autodocs'],
-  render: (args) => ({
-    components: { VSwitch },
-    setup() {
-      return { args }
-    },
-    template: `
-      <v-switch
-        v-bind="args"
-        :color="args.color"
-      />
-    `,
-  }),
   argTypes: {
-    label: { control: 'text' },
+    label:      { control: 'text' },
     modelValue: { control: 'boolean' },
-    disabled: { control: 'boolean' },
-    color: { control: 'color' },
+    disabled:   { control: 'boolean' },
   },
 }
 
@@ -32,7 +26,6 @@ export const Off = {
     label: 'Label',
     modelValue: false,
     disabled: false,
-    color: tokens.action.primary.default,
   },
 }
 
@@ -43,7 +36,6 @@ export const On = {
     label: 'Label',
     modelValue: true,
     disabled: false,
-    color: tokens.action.primary.default,
   },
 }
 
@@ -54,7 +46,6 @@ export const DisabledOff = {
     label: 'Label',
     modelValue: false,
     disabled: true,
-    color: tokens.disabled.text,
   },
 }
 
@@ -65,6 +56,5 @@ export const DisabledOn = {
     label: 'Label',
     modelValue: true,
     disabled: true,
-    color: tokens.disabled.text,
   },
 }

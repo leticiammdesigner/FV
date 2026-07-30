@@ -1,31 +1,25 @@
-import { VCheckbox } from 'vuetify/components'
-import { tokens } from '../tokens/tokens.js'
+// ============================================
+// SISLOC DS — FORÇA DE VENDAS
+// SislocCheckbox.stories.js
+//
+// A implementação vive em SislocCheckbox.vue.
+// A cor do DS é interna ao componente — por isso `color`
+// e `fontFamily` saíram dos args.
+// ============================================
+
+import SislocCheckbox from './SislocCheckbox.vue'
 
 export default {
   title: 'Formulário/Checkbox',
-  component: VCheckbox,
+  component: SislocCheckbox,
   tags: ['autodocs'],
-  render: (args) => ({
-    components: { VCheckbox },
-    setup() {
-      return { args }
-    },
-    template: `
-      <v-checkbox
-        v-bind="args"
-        :color="args.color"
-        :style="{ fontFamily: args.fontFamily }"
-      />
-    `,
-  }),
   argTypes: {
-    label: { control: 'text' },
-    hint: { control: 'text' },
+    label:          { control: 'text' },
+    hint:           { control: 'text' },
     persistentHint: { control: 'boolean' },
-    disabled: { control: 'boolean' },
-    indeterminate: { control: 'boolean' },
-    modelValue: { control: 'boolean' },
-    color: { control: 'color' },
+    disabled:       { control: 'boolean' },
+    indeterminate:  { control: 'boolean' },
+    modelValue:     { control: 'boolean' },
   },
 }
 
@@ -37,8 +31,6 @@ export const Off = {
     modelValue: false,
     disabled: false,
     indeterminate: false,
-    color: tokens.action.primary.default,
-    fontFamily: tokens.typography.fontFamily,
   },
 }
 
@@ -50,8 +42,6 @@ export const On = {
     modelValue: true,
     disabled: false,
     indeterminate: false,
-    color: tokens.action.primary.default,
-    fontFamily: tokens.typography.fontFamily,
   },
 }
 
@@ -63,8 +53,6 @@ export const Indeterminate = {
     modelValue: false,
     indeterminate: true,
     disabled: false,
-    color: tokens.action.primary.default,
-    fontFamily: tokens.typography.fontFamily,
   },
 }
 
@@ -77,8 +65,6 @@ export const ComHint = {
     hint: 'Texto de apoio',
     persistentHint: true,
     disabled: false,
-    color: tokens.action.primary.default,
-    fontFamily: tokens.typography.fontFamily,
   },
 }
 
@@ -89,8 +75,6 @@ export const DisabledOn = {
     label: 'Label',
     modelValue: true,
     disabled: true,
-    color: tokens.disabled.text,
-    fontFamily: tokens.typography.fontFamily,
   },
 }
 
@@ -101,7 +85,5 @@ export const DisabledOff = {
     label: 'Label',
     modelValue: false,
     disabled: true,
-    color: tokens.disabled.text,
-    fontFamily: tokens.typography.fontFamily,
   },
 }
