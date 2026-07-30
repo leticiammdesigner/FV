@@ -1,22 +1,14 @@
 // ============================================
 // SISLOC DS — FORÇA DE VENDAS
-// BotaoIcone.stories.js
+// SislocIconButton.stories.js
 //
-// Baseado no node 40008113-312 (Sisloc DS | Componentes)
-//
-// Especificações:
-//   Tamanho: 40x40px (padding 8px + ícone 24px)
-//   Border-radius: 360px (circular)
-//   Base:  background #F1F1F1
-//   Hover: background #E6E1E6 (neutral 90)
-//   Ícone: 24x24px, cor #79767A
-//   Sem borda, sem sombra, sem texto
-//
-// Não usa v-btn — usa <button> nativo para evitar
-// conflito com estilos do Vuetify em icon buttons
+// A implementação vive em SislocIconButton.vue.
+// O catálogo de ícones abaixo é conteúdo de demonstração —
+// o componente aceita qualquer SVG via prop `icon`.
 // ============================================
 
-import { tokens } from '../tokens/tokens.js'
+import SislocIconButton from './SislocIconButton.vue'
+import { tokens } from '../../tokens/tokens.js'
 
 // ─── Ícones SVG (outline, cor #79767A) ───────────────────────────────────────
 
@@ -50,59 +42,14 @@ const icons = {
   </svg>`,
 }
 
-const injectBtnIconStyles = () => {
-  const id = 'sisloc-btn-icon-styles'
-  if (document.getElementById(id)) return
-  const style = document.createElement('style')
-  style.id = id
-  style.textContent = `
-    .sisloc-btn-icon {
-      display: inline-flex;
-      padding: 8px;
-      justify-content: center;
-      align-items: center;
-      gap: 8px;
-      border-radius: 360px;
-      background: #F1F1F1;
-      border: none;
-      cursor: pointer;
-      width: 40px;
-      height: 40px;
-      flex-shrink: 0;
-      transition: background 0.15s ease;
-      outline: none;
-    }
-
-    .sisloc-btn-icon:hover {
-      background: #E6E1E6;
-    }
-
-    .sisloc-btn-icon:focus-visible {
-      outline: 2px solid ${tokens.border.focus};
-      outline-offset: 2px;
-    }
-
-    .sisloc-btn-icon:active {
-      background: #D6D0D6;
-    }
-
-    .sisloc-btn-icon:disabled {
-      opacity: 0.38;
-      cursor: not-allowed;
-      pointer-events: none;
-    }
-
-    .sisloc-btn-icon svg {
-      width: 24px;
-      height: 24px;
-      flex-shrink: 0;
-    }
-  `
-  document.head.appendChild(style)
-}
+// Hover não é acionável em story estática. Em vez de forçar um background
+// inline, sobrescrevemos a própria custom property que o componente usa —
+// assim a demo consome o mesmo token do estado real.
+const HOVER_VARS = { '--sisloc-icon-btn-bg': tokens.components.iconButton.hoverBackground }
 
 export default {
   title: 'Componentes/Botão Ícone',
+  component: SislocIconButton,
   parameters: {
     docs: {
       description: {
@@ -119,7 +66,7 @@ export default {
 
 **Uso no Força de Vendas:** toolbar de todas as telas (Filter, Sort, Search, More)
 
-**Classe:** \`class="sisloc-btn-icon"\`
+**Componente:** \`SislocIconButton.vue\` — o SVG entra pela prop \`icon\`.
         `,
       },
     },
@@ -132,24 +79,23 @@ export default {
 export const Filter = {
   name: 'Filter',
   render: () => ({
+    components: { SislocIconButton },
     setup() {
-      injectBtnIconStyles()
-      return { icons }
+      return { icons, HOVER_VARS }
     },
     template: `
       <div style="padding: 24px; font-family: Roboto, sans-serif; display: flex; flex-direction: column; gap: 16px;">
         <div style="display: flex; align-items: center; gap: 16px;">
           <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
-            <button class="sisloc-btn-icon" aria-label="Filtrar" v-html="icons.filter" />
+            <SislocIconButton :icon="icons.filter" aria-label="Filtrar" />
             <span style="font-size: 11px; color: #79767A;">Base</span>
           </div>
           <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
-            <button class="sisloc-btn-icon" aria-label="Filtrar"
-              style="background: #E6E1E6;" v-html="icons.filter" />
+            <SislocIconButton :icon="icons.filter" aria-label="Filtrar" :style="HOVER_VARS" />
             <span style="font-size: 11px; color: #79767A;">Hover</span>
           </div>
           <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
-            <button class="sisloc-btn-icon" aria-label="Filtrar" disabled v-html="icons.filter" />
+            <SislocIconButton :icon="icons.filter" aria-label="Filtrar" disabled />
             <span style="font-size: 11px; color: #79767A;">Disabled</span>
           </div>
         </div>
@@ -169,19 +115,18 @@ export const Filter = {
 export const Sort = {
   name: 'Sort',
   render: () => ({
+    components: { SislocIconButton },
     setup() {
-      injectBtnIconStyles()
-      return { icons }
+      return { icons, HOVER_VARS }
     },
     template: `
       <div style="padding: 24px; display: flex; align-items: center; gap: 16px;">
         <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
-          <button class="sisloc-btn-icon" aria-label="Ordenar" v-html="icons.sort" />
+          <SislocIconButton :icon="icons.sort" aria-label="Ordenar" />
           <span style="font-size: 11px; color: #79767A;">Base</span>
         </div>
         <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
-          <button class="sisloc-btn-icon" aria-label="Ordenar"
-            style="background: #E6E1E6;" v-html="icons.sort" />
+          <SislocIconButton :icon="icons.sort" aria-label="Ordenar" :style="HOVER_VARS" />
           <span style="font-size: 11px; color: #79767A;">Hover</span>
         </div>
       </div>
@@ -193,8 +138,8 @@ export const Sort = {
 export const ToolbarIcones = {
   name: 'Toolbar — ícones disponíveis',
   render: () => ({
+    components: { SislocIconButton },
     setup() {
-      injectBtnIconStyles()
       return { icons }
     },
     template: `
@@ -202,37 +147,37 @@ export const ToolbarIcones = {
         <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
 
           <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
-            <button class="sisloc-btn-icon" aria-label="Filtrar" v-html="icons.filter" />
+            <SislocIconButton :icon="icons.filter" aria-label="Filtrar" />
             <span style="font-size: 10px; color: #79767A;">filter</span>
           </div>
 
           <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
-            <button class="sisloc-btn-icon" aria-label="Ordenar" v-html="icons.sort" />
+            <SislocIconButton :icon="icons.sort" aria-label="Ordenar" />
             <span style="font-size: 10px; color: #79767A;">sort</span>
           </div>
 
           <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
-            <button class="sisloc-btn-icon" aria-label="Buscar" v-html="icons.search" />
+            <SislocIconButton :icon="icons.search" aria-label="Buscar" />
             <span style="font-size: 10px; color: #79767A;">search</span>
           </div>
 
           <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
-            <button class="sisloc-btn-icon" aria-label="Mais opções" v-html="icons.more_vert" />
+            <SislocIconButton :icon="icons.more_vert" aria-label="Mais opções" />
             <span style="font-size: 10px; color: #79767A;">more_vert</span>
           </div>
 
           <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
-            <button class="sisloc-btn-icon" aria-label="Editar" v-html="icons.edit" />
+            <SislocIconButton :icon="icons.edit" aria-label="Editar" />
             <span style="font-size: 10px; color: #79767A;">edit</span>
           </div>
 
           <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
-            <button class="sisloc-btn-icon" aria-label="Excluir" v-html="icons.delete" />
+            <SislocIconButton :icon="icons.delete" aria-label="Excluir" />
             <span style="font-size: 10px; color: #79767A;">delete</span>
           </div>
 
           <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
-            <button class="sisloc-btn-icon" aria-label="Fechar" v-html="icons.close" />
+            <SislocIconButton :icon="icons.close" aria-label="Fechar" />
             <span style="font-size: 10px; color: #79767A;">close</span>
           </div>
 
@@ -243,7 +188,7 @@ export const ToolbarIcones = {
   parameters: {
     docs: {
       description: {
-        story: 'Todos os ícones disponíveis para uso na toolbar. Troque o SVG interno para usar qualquer ícone do sistema.',
+        story: 'Todos os ícones disponíveis para uso na toolbar. Passe qualquer SVG pela prop `icon`.',
       },
     },
   },
@@ -253,9 +198,9 @@ export const ToolbarIcones = {
 export const TodosEstados = {
   name: 'Todos os estados',
   render: () => ({
+    components: { SislocIconButton },
     setup() {
-      injectBtnIconStyles()
-      return { icons }
+      return { icons, HOVER_VARS }
     },
     template: `
       <div style="padding: 24px; font-family: Roboto, sans-serif; display: flex; flex-direction: column; gap: 24px;">
@@ -263,30 +208,30 @@ export const TodosEstados = {
         <div>
           <p style="font-size: 11px; color: #79767A; margin: 0 0 12px; font-weight: 500;">Base — background #F1F1F1</p>
           <div style="display: flex; gap: 8px;">
-            <button class="sisloc-btn-icon" aria-label="Filtrar" v-html="icons.filter" />
-            <button class="sisloc-btn-icon" aria-label="Ordenar" v-html="icons.sort" />
-            <button class="sisloc-btn-icon" aria-label="Buscar" v-html="icons.search" />
-            <button class="sisloc-btn-icon" aria-label="Mais" v-html="icons.more_vert" />
+            <SislocIconButton :icon="icons.filter" aria-label="Filtrar" />
+            <SislocIconButton :icon="icons.sort" aria-label="Ordenar" />
+            <SislocIconButton :icon="icons.search" aria-label="Buscar" />
+            <SislocIconButton :icon="icons.more_vert" aria-label="Mais" />
           </div>
         </div>
 
         <div>
           <p style="font-size: 11px; color: #79767A; margin: 0 0 12px; font-weight: 500;">Hover — background #E6E1E6</p>
           <div style="display: flex; gap: 8px;">
-            <button class="sisloc-btn-icon" style="background:#E6E1E6;" aria-label="Filtrar" v-html="icons.filter" />
-            <button class="sisloc-btn-icon" style="background:#E6E1E6;" aria-label="Ordenar" v-html="icons.sort" />
-            <button class="sisloc-btn-icon" style="background:#E6E1E6;" aria-label="Buscar" v-html="icons.search" />
-            <button class="sisloc-btn-icon" style="background:#E6E1E6;" aria-label="Mais" v-html="icons.more_vert" />
+            <SislocIconButton :icon="icons.filter" aria-label="Filtrar" :style="HOVER_VARS" />
+            <SislocIconButton :icon="icons.sort" aria-label="Ordenar" :style="HOVER_VARS" />
+            <SislocIconButton :icon="icons.search" aria-label="Buscar" :style="HOVER_VARS" />
+            <SislocIconButton :icon="icons.more_vert" aria-label="Mais" :style="HOVER_VARS" />
           </div>
         </div>
 
         <div>
           <p style="font-size: 11px; color: #79767A; margin: 0 0 12px; font-weight: 500;">Disabled — opacity 38%</p>
           <div style="display: flex; gap: 8px;">
-            <button class="sisloc-btn-icon" disabled aria-label="Filtrar" v-html="icons.filter" />
-            <button class="sisloc-btn-icon" disabled aria-label="Ordenar" v-html="icons.sort" />
-            <button class="sisloc-btn-icon" disabled aria-label="Buscar" v-html="icons.search" />
-            <button class="sisloc-btn-icon" disabled aria-label="Mais" v-html="icons.more_vert" />
+            <SislocIconButton :icon="icons.filter" aria-label="Filtrar" disabled />
+            <SislocIconButton :icon="icons.sort" aria-label="Ordenar" disabled />
+            <SislocIconButton :icon="icons.search" aria-label="Buscar" disabled />
+            <SislocIconButton :icon="icons.more_vert" aria-label="Mais" disabled />
           </div>
         </div>
 
@@ -299,9 +244,9 @@ export const TodosEstados = {
 export const UsoToolbar = {
   name: 'Uso — Toolbar (contexto real)',
   render: () => ({
+    components: { SislocIconButton },
     setup() {
-      injectBtnIconStyles()
-      return { icons, tokens }
+      return { icons }
     },
     template: `
       <div style="padding: 24px; font-family: Roboto, sans-serif;">
@@ -317,10 +262,10 @@ export const UsoToolbar = {
         ">
           <span style="font-size: 14px; font-weight: 500; color: #1D1B20;">Leads</span>
           <div style="display: flex; align-items: center; gap: 4px;">
-            <button class="sisloc-btn-icon" aria-label="Buscar" v-html="icons.search" />
-            <button class="sisloc-btn-icon" aria-label="Filtrar" v-html="icons.filter" />
-            <button class="sisloc-btn-icon" aria-label="Ordenar" v-html="icons.sort" />
-            <button class="sisloc-btn-icon" aria-label="Mais opções" v-html="icons.more_vert" />
+            <SislocIconButton :icon="icons.search" aria-label="Buscar" />
+            <SislocIconButton :icon="icons.filter" aria-label="Filtrar" />
+            <SislocIconButton :icon="icons.sort" aria-label="Ordenar" />
+            <SislocIconButton :icon="icons.more_vert" aria-label="Mais opções" />
           </div>
         </div>
       </div>

@@ -292,12 +292,15 @@ export const tokens = {
       text:         '#FFFFFF',
     },
 
+    // Valores conferidos contra o componente real (SislocChip.vue).
     chip: {
-      height:       '24px',
-      borderRadius: '16px',
-      fontSize:     '12px',
-      fontWeight:   '400',
-      padding:      '0 8px',
+      height:        '20px',
+      borderRadius:  '10px',
+      fontSize:      '10px',
+      fontWeight:    '400',
+      lineHeight:    '20px',
+      letterSpacing: 'normal',
+      padding:       '0 12px',
     },
 
     card: {
@@ -317,20 +320,34 @@ export const tokens = {
       padding:      '0 6px',
     },
 
+    // Escala e tipografia conferidas contra o componente real
+    // (SislocAvatar.vue) — 5 tamanhos, chaveados pelo valor em px.
     avatar: {
-      sizes: {
-        sm: '24px',
-        md: '32px',
-        lg: '40px',
-        xl: '48px',
-      },
+      background:   '#304FFE',
+      textColor:    '#FFFFFF',
       borderRadius: '50%',
-      fontSize: {
-        sm: '10px',
-        md: '12px',
-        lg: '14px',
-        xl: '16px',
+      // Padding aplicado apenas ao tipo `text`
+      textPadding:  '10px',
+      sizes: [16, 24, 32, 48, 64],
+      // Tipografia das iniciais varia por tamanho
+      typography: {
+        16: { fontSize: '10px', lineHeight: '12px', letterSpacing: '0.2px' },
+        24: { fontSize: '14px', lineHeight: '22px', letterSpacing: '0.014px' },
+        32: { fontSize: '16px', lineHeight: '24px', letterSpacing: '0.5px' },
+        48: { fontSize: '16px', lineHeight: '24px', letterSpacing: '0.5px' },
+        64: { fontSize: '16px', lineHeight: '24px', letterSpacing: '0.5px' },
       },
+    },
+
+    iconButton: {
+      size:             '40px',
+      iconSize:         '24px',
+      padding:          '8px',
+      borderRadius:     '360px',
+      background:       '#F1F1F1',
+      hoverBackground:  '#E6E1E6',
+      activeBackground: '#D6D0D6',
+      disabledOpacity:  '0.38',
     },
 
     tabs: {
