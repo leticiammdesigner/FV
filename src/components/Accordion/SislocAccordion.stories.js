@@ -18,7 +18,7 @@
 
 import { ref } from 'vue'
 import SislocAccordion from './SislocAccordion.vue'
-import { tokens } from '../tokens/tokens.js'
+import { tokens } from '../../tokens/tokens.js'
 
 export default {
   title: 'Componentes/Accordion',

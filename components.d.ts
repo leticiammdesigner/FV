@@ -12,6 +12,7 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
+    SislocAccordion: typeof import('./src/components/Accordion/SislocAccordion.vue')['default']
     SislocAvatar: typeof import('./src/components/Avatar/SislocAvatar.vue')['default']
     SislocBreadcrumb: typeof import('./src/components/Breadcrumb/SislocBreadcrumb.vue')['default']
     SislocButton: typeof import('./src/components/Button/SislocButton.vue')['default']
@@ -25,11 +26,14 @@ declare module 'vue' {
     SislocInput: typeof import('./src/components/Input/SislocInput.vue')['default']
     SislocModal: typeof import('./src/components/Modal/SislocModal.vue')['default']
     SislocPagination: typeof import('./src/components/DataTable/SislocPagination.vue')['default']
+    SislocPath: typeof import('./src/components/Path/SislocPath.vue')['default']
     SislocRadio: typeof import('./src/components/Radio/SislocRadio.vue')['default']
     SislocSearchBar: typeof import('./src/components/SearchBar/SislocSearchBar.vue')['default']
     SislocSegmentedControl: typeof import('./src/components/Toggle/SislocSegmentedControl.vue')['default']
+    SislocSelect: typeof import('./src/components/Select/SislocSelect.vue')['default']
     SislocSwitch: typeof import('./src/components/Switch/SislocSwitch.vue')['default']
     SislocTabs: typeof import('./src/components/Tabs/SislocTabs.vue')['default']
+    SislocTextarea: typeof import('./src/components/Textarea/SislocTextarea.vue')['default']
     SislocTooltip: typeof import('./src/components/Tooltip/SislocTooltip.vue')['default']
     SislocViewToggle: typeof import('./src/components/Toggle/SislocViewToggle.vue')['default']
   }
